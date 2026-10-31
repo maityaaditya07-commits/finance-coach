@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --bg-paper: #FAF9F6;
+  --ink-primary: #191A18;
+  --text-secondary: #777771;
+  --border-hairline: #E6E4DE;
+  --forest-green: #194D39;
+  --emerald-accent: #27B889;
+  --warning-amber: #B77932;
+  --card-secondary: #F4F2EC;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D6CE;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BFBCB2;
+}
+
+*:focus-visible {
+  outline: 1.5px solid #194D39;
+  outline-offset: 2px;
+}
+
+/* Tactile Range Sliders for What-If Simulator */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #E6E4DE;
+  height: 4px;
+  border-radius: 2px;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #191A18;
+  border: 2px solid #FAF9F6;
+  box-shadow: 0 1px 3px rgba(25, 26, 24, 0.2);
+  cursor: pointer;
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #194D39;
+}
+input[type=range]::-webkit-slider-thumb:active {
+  transform: scale(1.05);
+}
+
+/* Scroll-triggered reveal animation classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1), transform 700ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle editorial paper grain texture */
+.paper-grain {
+  background-image: radial-gradient(rgba(25, 26, 24, 0.04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Smooth motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .reveal {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+

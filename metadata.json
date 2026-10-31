@@ -1,0 +1,6 @@
+{
+  "name": "Living Money — AI Personal Finance Coach",
+  "description": "A premium, editorial personal finance coach. Enter spending in natural language, model what-if scenarios, and inspect evidence-based wealth projections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
